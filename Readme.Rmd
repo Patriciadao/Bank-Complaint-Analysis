@@ -57,8 +57,7 @@ ggplot(select_res, aes(x = `Timely response?`)) +
   ) +
   theme_minimal()
 ```
-
-#Complaints of BOA#
+#Complaints by States Among Finance Companies#
 ```{r}
 consumer_data <- select_res
 library(tidyverse)
@@ -69,7 +68,11 @@ finance_data <- consumer_data %>%
   group_by(State) %>% 
   summarise(count = n()) %>% 
   arrange(desc(count))
+finance_data
+```
 
+#Complaints of BOA in 2014#
+```{r}
 BOA <- consumer_data %>% 
   filter(Company == 'Bank of America',
          year(`Date received`) == 2014) %>% 
